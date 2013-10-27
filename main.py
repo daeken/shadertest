@@ -6,6 +6,7 @@ from handlers import *
 
 app = Flask(__name__)
 app.debug = True
+app.session_permanent = True
 if os.path.exists('secret_key'):
 	app.secret_key = file('secret_key', 'r').read()
 else:
