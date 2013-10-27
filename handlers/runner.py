@@ -34,3 +34,4 @@ def rpc_check():
 def rpc_feedback(id, success, errors):
 	session['seen'].append(id)
 	Shader.addFeedback(int(id), session['info'], success == 'true', errors)
+	session.modified = True
