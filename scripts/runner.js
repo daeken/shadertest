@@ -42,7 +42,6 @@ function saveInfo() {
 
 function pollServer() {
 	$rpc.runner.check(function(ret) {
-		console.log()
 		if(ret === false)
 			return location.reload();
 
@@ -99,6 +98,7 @@ function compile(shader) {
 function completeShader(shader, success, error) {
 	$rpc.runner.feedback(shader.id, success, error);
 	status('Done!  Waiting for more shaders...');
+	initGL();
 	pollServer();
 }
 
