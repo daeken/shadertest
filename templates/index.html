@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>$csrf = '{{ session['csrf'] }}';</script>
+		<script src="/rpc.js"></script>
+		<script src="/scripts/index.js"></script>
+	</head>
+
+	<body>
+		<h1>Shadertest!</h1>
+		{{ nodes }} nodes online.<br>
+
+		<textarea id="code" rows="20" cols="120">
+		void main(void)
+		{
+			vec2 uv = gl_FragCoord.xy / iResolution.xy;
+			gl_FragColor = vec4(uv,0.5+0.5*sin(iGlobalTime),1.0);
+		}
+		</textarea><br>
+		<button id="test">Test</button><br>
+		<br>
+		<a href="{{ handler.runner.get_index }}">Runner</a>
+	</body>
+</html>

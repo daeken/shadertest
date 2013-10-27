@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="/scripts/jquery.cookie.js"></script>
+		<script>$csrf = '{{ session['csrf'] }}';</script>
+		<script src="/rpc.js"></script>
+		<style>
+		.success {
+			background-color: green;
+		}
+		.failure {
+			background-color: red;
+		}
+		</style>
+		<script>
+		setTimeout(function() { location.reload(); }, 5*1000);
+		</script>
+	</head>
+
+	<body>
+		<h1>Shadertest Results</h1>
+		This page will automatically refresh to show you the latest information.<br>
+
+		<h2>Results</h2>
+
+		<table>
+			{% for info, success, errors in feedback %}
+				<tr class="{{ 'success' if success else 'failure' }}">
+					<td>{{ info['ua'] }}<br>{{ info['renderer'] }}</td>
+					<td><pre>{{ errors }}</pre></td>
+				</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
