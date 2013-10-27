@@ -54,6 +54,7 @@ class Shader(object):
 	@staticmethod
 	def addFeedback(id, info, success, errors):
 		connection.rpush('feedback:%i' % id, (info, success, errors))
+		connection.expire('feedback:%i' % id, 120*60)
 
 	@staticmethod
 	def getFeedback(id):
