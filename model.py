@@ -36,6 +36,10 @@ class Shader(object):
 		self.id, self.code, self.uniforms = id, code, uniforms
 
 	@staticmethod
+	def exists(id):
+		return connection.hget('shader:%i' % id, 'code') != None
+
+	@staticmethod
 	def create(id, code, uniforms):
 		connection.hset('shader:%i' % id, 'code', code)
 		connection.hset('shader:%i' % id, 'uniforms', uniforms)

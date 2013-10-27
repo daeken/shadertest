@@ -9,6 +9,9 @@
 
 	<body>
 		<h1>Shadertest!</h1>
+		{% if error %}
+		<div style="color: red; font-weight: bold">{{ error }}</div>
+		{% endif %}
 		{{ nodes }} nodes online.<br>
 
 		<textarea id="code" rows="20" cols="120">

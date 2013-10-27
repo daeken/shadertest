@@ -6,6 +6,9 @@
 		<script>$csrf = '{{ session['csrf'] }}';</script>
 		<script src="/rpc.js"></script>
 		<script src="/scripts/runner.js"></script>
+		<script>
+		setTimeout(function() { location.reload(); }, 60*60*1000); // Refresh hourly
+		</script>
 	</head>
 
 	<body>
@@ -17,7 +20,7 @@
 		<br>
 		<div id="gpuInfo" style="display: none">
 			Before you can start Shadertest for the first time, you have to tell us a bit about your GPU.<br>
-			If you're using Chrome, go to <a href="about:gpu">about:gpu</a> and copy the "GL_RENDERER" line from the "Driver Information" table here.<br>
+			If you're using Chrome, go to <a href="chrome://gpu">chrome://gpu</a> and copy the "GL_RENDERER" line from the "Driver Information" table here.<br>
 			If you're using Firefox, go to <a href="about:support">about:support</a> and copy the "WebGL Renderer" line from the "Graphics" table here.<br>
 			Renderer: <input type="text" id="renderer"><br>
 			<button id="submit-info">Submit</button><br>
