@@ -25,6 +25,10 @@ class Node(object):
 		return len(connection.keys('node:*'))
 
 	@staticmethod
+	def getAll():
+		return [Node(int(node.split(':')[1]), eval(connection.hget(node, 'info'))) for node in connection.keys('node:*')]
+
+	@staticmethod
 	def refresh(id, info):
 		if Node.exists(id):
 			connection.expire('node:%i' % id, 5*60)

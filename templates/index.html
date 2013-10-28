@@ -12,7 +12,7 @@
 		{% if error %}
 		<div style="color: red; font-weight: bold">{{ error }}</div>
 		{% endif %}
-		{{ nodes }} nodes online.<br>
+		<a href="{{ handler.index.get_nodes }}">{{ nodes }} nodes online.</a><br>
 
 		<textarea id="code" rows="20" cols="120">
 		void main(void)

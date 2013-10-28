@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="/scripts/jquery.cookie.js"></script>
+		<script>$csrf = '{{ session['csrf'] }}';</script>
+		<script src="/rpc.js"></script>
+		<script>
+		setTimeout(function() { location.reload(); }, 60*1000);
+		</script>
+	</head>
+
+	<body>
+		<h1>Shadertest Nodes</h1>
+		This page will automatically refresh to show you the latest information.<br>
+		<br>
+		<table border="1">
+			<tr>
+				<th>User Agent</th>
+				<th>Renderer</th>
+			</tr>
+			{% for node in nodes %}
+				<tr>
+					<td>{{ node.info['ua'] }}</td>
+					<td>{{ node.info['renderer'] }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

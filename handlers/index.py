@@ -9,3 +9,7 @@ def get_progress(id):
 	if not Shader.exists(id):
 		redirect(get_index.url(error='Shader expired'))
 	return dict(feedback=Shader.getFeedback(id))
+
+@handler('nodes')
+def get_nodes():
+	return dict(nodes=Node.getAll())
